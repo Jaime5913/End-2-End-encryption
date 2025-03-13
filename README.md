@@ -1,4 +1,4 @@
-# End-2-End-encryption
+# End-to-End-encryption
 
 ## Introduction
 
@@ -19,3 +19,30 @@ Below is a list of the main components of the hybrid cryptosystem used in this a
 The X25519 key exchange enables two parties, Alice and Bob, to agree on a shared secret using an insecure channel. Then, they derive an AES key from the shared secret using HKDF. Ed25519 is used to sign messages and verify authenticity. Finally, the derived AES key is used for symmetric encryption and decryption of messages and signatures using AES-GCM. These cryptographic components form a robust and efficient communication framework that operates securely over an insecure communication channel, achieving end-to-end encryption (E2EE) and preserving message confidentiality, authenticity, and integrity.
 
 Let us say Alice will send a message to Bob using this cryptosystem. The following diagrams demonstrate how the cryptosystem works from the point of view of Alice (sender):
+
+<p align="center">   
+ <img src="images/Alice.png"/>
+ <br/>
+ <em>Alice</em>
+</p>
+
+and Bob(recipient):
+
+<p align="center">   
+ <img src="images/Bob.png"/>
+ <br/>
+ <em>Bob</em>
+</p>
+
+## Resources
+The heavy lifting for the creation of this game comes from the [cryptography](https://cryptography.io/) library. Below are some important documentation points used for the code.
+
+- [Key serialization](https://cryptography.io/en/latest/hazmat/primitives/asymmetric/serialization/)
+- [X25519](https://cryptography.io/en/latest/hazmat/primitives/asymmetric/x25519/)
+- [Ed25519](https://cryptography.io/en/latest/hazmat/primitives/asymmetric/ed25519/)
+- [HKDF](https://cryptography.io/en/latest/hazmat/primitives/key-derivation-functions/#hkdf)
+- [AES-GCM](https://cryptography.io/en/latest/hazmat/primitives/aead/#cryptography.hazmat.primitives.ciphers.aead.AESGCM)
+
+In this variation of Telephone, suppose we create a group with Alice, Bob, and Charlie. We can say that Alice chose Bob to send the starting message to, the Bob chose Charlie. Charlie is the last one and must send a message to Alice to close the cycle and find out if the original message changed or tampered with.
+
+Alice -> Bob -> Chalie -> Alice
