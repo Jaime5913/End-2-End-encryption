@@ -21,7 +21,7 @@ The X25519 key exchange enables two parties, Alice and Bob, to agree on a shared
 Let us say Alice will send a message to Bob using this cryptosystem. The following diagrams demonstrate how the cryptosystem works from the point of view of Alice (sender):
 
 <p align="center">   
- <img src="images/Alice.png"/>
+ <img src="Images/Alice.png"/>
  <br/>
  <em>Alice</em>
 </p>
@@ -29,7 +29,7 @@ Let us say Alice will send a message to Bob using this cryptosystem. The followi
 and Bob(recipient):
 
 <p align="center">   
- <img src="images/Bob.png"/>
+ <img src="Images/Bob.png"/>
  <br/>
  <em>Bob</em>
 </p>
