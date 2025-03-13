@@ -170,7 +170,7 @@ print("Next Recipient's Ed25519 Public Key (PEM):\n", nxtRecipEd25519PublicKey, 
 
 # Signing (Note: here we are signing before encrypting, you may do the opposite i.e. encrypt then sign)
 # You need to use your Ed25519 signing key (private key)
-my_signature = myEd25519PrivateKey.sign(updated_message)  #......COMPLETE.....
+my_signature = myEd25519PrivateKey.sign(updated_message) 
 
 print("my signature (bytes):\n", my_signature, "\n")
 
@@ -178,7 +178,7 @@ updatedSigned_message = updated_message + b'|' + my_signature
 print("Data to be encrypted (message|signature) (bytes):\n", updatedSigned_message, "\n")
 
 # Key exchange with next recipient using ECDH
-shared_key = myX25519PrivateKey.exchange(nextRecipX25519PK)    #......COMPLETE.....
+shared_key = myX25519PrivateKey.exchange(nextRecipX25519PK)    
 
 print("Secret shared key (hex):", shared_key.hex())
 salt = os.urandom(12)
@@ -198,7 +198,7 @@ aesgcm = AESGCM(derived_key)
 nonce = os.urandom(12)
 data = updatedSigned_message
 aad = b'To Bob'
-nxtRecip_cyphertext = aesgcm.encrypt(nonce, data, aad ) #......COMPLETE.....
+nxtRecip_cyphertext = aesgcm.encrypt(nonce, data, aad ) 
 
 print("my encrypted message to next recipient (myself) (bytes):\n", nxtRecip_cyphertext, "\n")
 print("HKDF salt:", salt)
